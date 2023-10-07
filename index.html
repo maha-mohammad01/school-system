@@ -50,7 +50,7 @@
         </div>
 
         <section class="form-section">
-        <form action="confirm.html" method="get" id="sform" onsubmit="return validateForm()">
+        <form action="confirm.html" method="get" id="sform">
             <table>
                 <caption><h2>Student Information Form</h2> </caption>
                 <tr>
@@ -78,7 +78,12 @@
                 </tr>
                 <tr>
                     <td><label for="major">major</label></td>
-                    <td><input type="text" name="major" id="major"class="info"></td>
+                    <td> <select class="form-control col-6" id="major">
+                        <option value="administrator">Administrator</option>
+                        <option value="it">IT</option>
+                        <option value="science">Science</option>
+                        <option value="art">Art</option>
+                    </select></td>
                 </tr>
                 <tr>
                     <td><label for="grade">Grade</label></td>
@@ -86,7 +91,7 @@
                 </tr>
                <tr>
                 <td><label for="photo">Ublode image</label></td>
-                <td><input type="file" id="photo" class="info"  required> </td>
+                <td><input type="file" id="photo" class="info" > </td>
                </tr>
 
                 <tr>
