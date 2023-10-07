@@ -1,5 +1,6 @@
 let slideIndex = 0;
 showSlides();
+let studentsArray = [];
 
 function showSlides() {
     let slides = document.getElementsByClassName("slide");
@@ -14,10 +15,55 @@ function showSlides() {
     setTimeout(showSlides, 2000); 
 }
 
+function Student(name, dob, phoneNumber, gender, major, grade, photo) {
+    this.name = name;
+    this.dob = dob;
+    this.phoneNumber = phoneNumber;
+    this.gender = gender;
+    this.major = major;
+    this.grade = grade;
+    this.photo = photo;
+}
+
+
+function showSlides() {
+    const slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000);
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("sform");
     const cardContainer = document.getElementById("card-container");
+
+    // Retrieve stored students from local storage if available
+    const storedStudents = localStorage.getItem("students");
+    if (storedStudents) {
+        studentsArray = JSON.parse(storedStudents);
+
+
+        
+        // Create cards for the stored students
+        studentsArray.forEach(studentData => {
+            const student = new Student(
+                studentData.name,
+                studentData.dob,
+                studentData.phoneNumber,
+                studentData.gender,
+                studentData.major,
+                studentData.grade,
+                studentData.photo
+            );
+            createStudentCard(cardContainer, student);
+        });
+    }
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -30,24 +76,38 @@ document.addEventListener("DOMContentLoaded", function () {
         const grade = document.getElementById("grade").value;
         const photo = document.getElementById("photo").value;
 
-        // Create a new card element
-        const card = document.createElement("div");
-        card.classList.add("card");
+        // Create a new student object
+        const student = new Student(sname, dbirthday, phonenum, gender, major, grade, photo);
 
-        // Populate the card with student information
-        card.innerHTML = `
-            <h3>${sname}</h3>
-            <p>Date of Birth: ${dbirthday}</p>
-            <p>Gender: ${gender}</p>
-            <p>Phone Number: ${phonenum}</p>
-            <p>Major: ${major}</p>
-            <p>Grade: ${grade}</p>
-            <img src="${photo}" alt="Student Photo"">
-        `;
-        // Append the card to the card container
-        cardContainer.appendChild(card);
+        // Add the student to the array
+        studentsArray.push(student);
 
-      
+        // Save the updated studentsArray to local storage
+        localStorage.setItem("students", JSON.stringify(studentsArray));
+
+        // Create a new card element and populate it with student information
+        createStudentCard(cardContainer, student);
+
         form.reset();
     });
 });
+
+function createStudentCard(container, student) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    // Populate the card with student information
+    card.innerHTML = `
+        <h3>${student.name}</h3>
+        <p>Date of Birth: ${student.dob}</p>
+        <p>Gender: ${student.gender}</p>
+        <p>Phone Number: ${student.phoneNumber}</p>
+        <p>Major: ${student.major}</p>
+        <p>Grade: ${student.grade}</p>
+        <img src="${student.photo}" alt="Student Photo">
+    `;
+
+    // Append the card to the card container
+    container.appendChild(card);
+}
+console.log(studentsArray.length);
