@@ -17,12 +17,11 @@ function showSlides() {
 
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("sform");
-    const tableBody = document.querySelector("#student-table tbody");
+    const cardContainer = document.getElementById("card-container");
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-       
         const sname = document.getElementById("sname").value;
         const dbirthday = document.getElementById("dbirthday").value;
         const phonenum = document.getElementById("phonenum").value;
@@ -31,45 +30,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const grade = document.getElementById("grade").value;
         const photo = document.getElementById("photo").value;
 
+        // Create a new card element
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-        // Create a new table row
-        const newRow = document.createElement("tr");
-        newRow.innerHTML = `
-            <td>${sname}</td>
-            <td>${dbirthday}</td>
-            <td>${gender}</td>
-            <td>${phonenum}</td>
-            <td>${major}</td>
-            <td>${grade}</td>
-            <td>${photo}</td>
-
+        // Populate the card with student information
+        card.innerHTML = `
+            <h3>${sname}</h3>
+            <p>Date of Birth: ${dbirthday}</p>
+            <p>Gender: ${gender}</p>
+            <p>Phone Number: ${phonenum}</p>
+            <p>Major: ${major}</p>
+            <p>Grade: ${grade}</p>
+            <img src="${photo}" alt="Student Photo"">
         `;
+        // Append the card to the card container
+        cardContainer.appendChild(card);
 
-        // Append the new row to the table
-        tableBody.appendChild(newRow);
-
-        // Clear form fields
+      
         form.reset();
     });
 });
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const hamburgerMenu = document.querySelector(".hamburger-menu");
-    const navMenu = document.querySelector(".navmenu");
-
- 
-    hamburgerMenu.addEventListener("click", function () {
-        navMenu.classList.toggle("open"); 
-    });
-
-   
-    window.addEventListener("resize", function () {
-      
-        if (window.innerWidth > 768) {
-         
-            navMenu.classList.remove("open");
-        }
-    });
-});
-
