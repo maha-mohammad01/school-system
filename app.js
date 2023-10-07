@@ -39,6 +39,12 @@ function showSlides() {
     setTimeout(showSlides, 2000);
 }
 
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("sform");
     const cardContainer = document.getElementById("card-container");
@@ -49,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         studentsArray = JSON.parse(storedStudents);
 
 
-        
+
         // Create cards for the stored students
         studentsArray.forEach(studentData => {
             const student = new Student(
@@ -110,4 +116,29 @@ function createStudentCard(container, student) {
     // Append the card to the card container
     container.appendChild(card);
 }
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const hamburgerMenu = document.querySelector(".hamburger-menu");
+    const navMenu = document.querySelector(".navmenu");
+
+
+    hamburgerMenu.addEventListener("click", function () {
+        navMenu.classList.toggle("open"); 
+    });
+
+
+    window.addEventListener("resize", function () {
+
+        if (window.innerWidth > 768) {
+
+            navMenu.classList.remove("open");
+        }
+    });
+});
+
+
+
 console.log(studentsArray.length);
+console.log(studentsArray);
