@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>school</title>
+</head>
+<body class="index-page" data-bs-spy="scroll" data-bs-target="#navmenu">
+    <header>
+      
+        <img src="C:\Users\Orange\Desktop\scoolsystem\img\logoo.png" class="logo"> 
+       
+    </header>
+    <nav class="navmenu" id="nav"> 
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+           <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Login </a></li>
+            <li><a href="#">Register</a></li>
+            <li><a></a></li>
+
+            </ul>
+    </nav>
+
+    
+    <main>
+  
+
+        <div class="slideshow-container">
+            <div class="slide ade">
+                <img src="C:\Users\Orange\Desktop\scoolsystem\img\st4.jpg" alt="Image " style="width:1440px;height:500px;" class="images" >
+            </div>
+            <div class="slide fade">
+                <img src="C:\Users\Orange\Desktop\scoolsystem\img\st5.jpg" alt="Image 2"style="width:1440px;height:500px;" class="images">
+            </div>
+            <div class="slide fade">
+                <img src="C:\Users\Orange\Desktop\scoolsystem\img\st7.jpg" alt="Image 3"style="width:1440px;height:500px;" class="images">
+            </div>
+            <div class="slide fade">
+                <img src="C:\Users\Orange\Desktop\scoolsystem\img\st9.jpg" alt="Image 3" style="width:1440px;height:500px;"class="images">
+        </div>
+
+        <section class="form-section">
+        <form action="confirm.html" method="get" id="sform" onsubmit="return validateForm()">
+            <table>
+                <caption><h2>Student Information Form</h2> </caption>
+                <tr>
+                    <td><label for="sname">Student Name</label></td>
+                    <td class="info"><input type="text" id="sname" required class="info"></td>
+                </tr>
+
+                <tr>
+                    <td> <label for="dbirthday">Date of birth</label></td>
+                    <td><input type="date" required class="info" id="dbirthday"></td>
+                </tr>
+                
+                <tr>
+                    <td><label>Gender</label></td>
+                    <td>
+                        <select id="gender" class="info" required>
+                            <option value="Male" id="male">Male</option>
+                            <option value="Female" id="female">Female</option>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label for="phonenum">Phone</label></td>
+                    <td><input type="tel" name="phonenum" id="phonenum"class="info"></td>
+                </tr>
+                <tr>
+                    <td><label for="major">major</label></td>
+                    <td><input type="text" name="major" id="major"class="info"></td>
+                </tr>
+                <tr>
+                    <td><label for="grade">Grade</label></td>
+                    <td><input type="number" required class="info" id="grade"></td>
+                </tr>
+               <tr>
+                <td><label for="photo">Ublode image</label></td>
+                <td><input type="file" id="photo" class="info"  required> </td>
+               </tr>
+
+                <tr>
+                    <td colspan="2" class="reg" ><button type="submit" >Submit</button ></td>
+                </tr>
+            </section>
+            </table>
+            </form>
+
+
+            <section class="table-section">
+                <table id="student-table">
+                    <caption><h2>Student Information Table</h2></caption>
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Date of Birth</th>
+                            <th>Gender</th>
+                            <th>Phone Number</th>
+                            <th>Major</th>
+                            <th>Grade</th>
+                            <th>Student photo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                    </tbody>
+                </table>
+            </section>
+
+
+
+
+    </main>
+    <footer>
+        <p>&copy; 2023 Student Information</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
