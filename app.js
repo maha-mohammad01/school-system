@@ -1,5 +1,6 @@
 let slideIndex = 0;
 showSlides();
+let studentsArray = [];
 
 function showSlides() {
     let slides = document.getElementsByClassName("slide");
@@ -46,8 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         // Append the card to the card container
         cardContainer.appendChild(card);
-
-      
+        localStorage.setItem("students", JSON.stringify(studentsArray)); 
         form.reset();
     });
 });
